@@ -1,0 +1,59 @@
+Problem 2.  reverse string
+
+Task:
+
+Develop a script to reverse strings within matching parentheses.  Start with the
+innermost matching parentheses.
+
+
+Solution:
+
+Pseudo code:
+1. Read arguments, input string and expected output string.
+2. Identify the index value of the deepest left parenthesis.
+3. Identify the index value of the right parenthesis corresponding to the deepest left parenthesis.
+4. Using these 2 index locations, segment the input string into 3 segments.
+5. Reverse characters in the middle segment
+6. Recombine the 3 segments to form a new working string
+7. Repeat steps 1-5 until there are no more parentheses in the string
+8. Compare the resulting string to the expected output value provided as argument 2 to the script
+
+
+For automating the execution of test cases, the test cases are input into a file called testcase2.dat.  The format of the input configuration file is defined below.  Any new test cases should be added to this file and the script re-run.
+
+
+#INPUT_STRING	EXPECTED_OUTPUT_STRING	TESTCASE_DESCRIPTION
+(abcd)	dcba	# simple test case with one outer parentheses (i.e. leading left parenthesis)
+zyxw	zyxw	# no parentheses
+((up)tahw)		# test case with consecutive left parentheses and no specified expected output
+(u(love)i)	iloveu	# test case with 2 parentheses levels and one outer set of parentheses
+(ed(et(oc))el)	leetcod	# test case with 3 parentheses levels, consecutive right parentheses, outer set of parentheses, and invalid specified output string
+a(bcdefghijkl(mno)p)q	apmnolkjihgfedcbq	# test case with two levels of interior parentheses (i.e no leading outer set of parentheses)
+((abcdefghijklmnopqrstuvwxyz))	abcdefghijklmnopqrstuvwxyz	# test case with 2 sets of matching outer parentheses
+(act(golf)(soc(pid)))	socdipgolftca	# test case wiih multiple sets of parentheses at same level and the rightmost one having an internal set of parentheses
+trap(lag(mart))(tar)	trapmartgalrat	# test case with multiple sets of parentheses at same level and the rightmost one having an internal set of parentheses
+
+
+
+
+How to test:
+------------
+
+Execute the wrapper script:
+./runchk_reverse_str.sh
+
+This wrapper script will iterate through each test case listed in testcase.dat, collect the input string
+and expected output string values and repeatedly invoke the script task2.sh supplying the input and output
+strings as arg1 and arg2.
+
+Sample Output:
+TESTCASE (abcd):  SUCCESS - Result "dcba" matches expected output.
+TESTCASE zyxw:  SUCCESS - Result "zyxw" matches expected output.
+TESTCASE ((up)tahw):  FAILURE - Result "whatup" does not match expected output, "#".
+TESTCASE (u(love)i):  SUCCESS - Result "iloveu" matches expected output.
+TESTCASE (ed(et(oc))el):  FAILURE - Result "leetcode" does not match expected output, "leetcod".
+TESTCASE a(bcdefghijkl(mno)p)q:  SUCCESS - Result "apmnolkjihgfedcbq" matches expected output.
+TESTCASE ((abcdefghijklmnopqrstuvwxyz)):  SUCCESS - Result "abcdefghijklmnopqrstuvwxyz" matches expected output.
+TESTCASE (act(golf)(soc(pid))):  SUCCESS - Result "socdipgolftca" matches expected output.
+TESTCASE trap(lag(mart))(tar):  SUCCESS - Result "trapmartgalrat" matches expected output.
+

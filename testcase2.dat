@@ -1,0 +1,11 @@
+#INPUT_STR	EXPECTED_OUTPUT_STR	COMMENT
+(abcd)	dcba	# simple test case with one outer parentheses (i.e. leading left parenthesis)
+
+zyxw	zyxw	# no parentheses
+((up)tahw)		# test case with consecutive left parentheses and no specified expected output
+(u(love)i)	iloveu	# test case with 2 parentheses levels and one outer set of parentheses
+(ed(et(oc))el)	leetcod	# test case with 3 parentheses levels, consecutive right parentheses, outer set of parentheses, and invalid specified output string
+a(bcdefghijkl(mno)p)q	apmnolkjihgfedcbq	# test case with two levels of interior parentheses (i.e no leading outer set of parentheses)
+((abcdefghijklmnopqrstuvwxyz))	abcdefghijklmnopqrstuvwxyz	# test case with 2 sets of matching outer parentheses
+(act(golf)(soc(pid)))	socdipgolftca	# test case wiih multiple sets of parentheses at same level and the rightmost one having an internal set of parentheses
+trap(lag(mart))(tar)	trapmartgalrat	# test case with multiple sets of parentheses at same level and the rightmost one having an internal set of parentheses
